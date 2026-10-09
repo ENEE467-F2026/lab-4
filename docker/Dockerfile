@@ -56,7 +56,8 @@ RUN code-server --install-extension ms-python.python
 COPY extensions/ms-iot.vscode-ros-0.9.6.vsix .
 RUN code-server --install-extension ms-iot.vscode-ros-0.9.6.vsix
 
-RUN pip install ipython==9.7.0 roboticstoolbox-python==1.1.1 numpy==1.26.4 --break-system-packages && \
+# --ignore-installed to avoid docker build
+RUN pip install ipython==9.7.0 roboticstoolbox-python==1.1.1 numpy==1.26.4 --ignore-installed --break-system-packages && \
     export PATH=/home/robot/.local/bin:$PATH
 
 # Set datetime and timezone correctly
